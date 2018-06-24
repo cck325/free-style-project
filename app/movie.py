@@ -30,7 +30,7 @@ Please Select an Operation
     --------- | ------------------
     'Now'     | New Movies in Theaters Now.
     'Movie'   | Show Information of A Movie.
-    'Actor'   | Filmography of an Actor/Actress.
+    'Actor'   | List Filmography of an Actor/Actress.
     'Popular' | Most Popular Movies.
     'Lucky'   | Give a Random Movie Suggestion.
     'Exit'    | Exit the application."""
@@ -81,7 +81,7 @@ def movie_info():
         if status_code == 200:
             pass
         else:
-            print("Something Went Wrong, Status Code:",status_code)
+            print("Something Went Wrong, HTTP Status Code:",status_code,"Please Check Read Me and Try Again Later")
             exit()
         all_search_result = json.loads(response.text)
         check_result = int(all_search_result["total_results"])
@@ -166,9 +166,76 @@ def movie_info2():
 ######### Actor Lookup ##############################
 
 def actor():
-    print("actor")
+    while True:
+        actor_name = input("Plase Enter a Actor/Actress Name: ")
+        actor_name_ns = actor_name.replace(" ", "%20")
+        request_url4 = f"https://api.themoviedb.org/3/search/person?api_key={api_key}&language=en-US&query={actor_name_ns}&page=1&include_adult=false"
+        response = requests.get(request_url4)
+        status_code = response.status_code
+        #print(status_code)
+        if status_code == 200:
+            break
+        else:
+            print("Something Went Wrong, HTTP Status Code:",status_code,"Please Check Read Me and Try Again Later")
+            exit()
+    all_search_result = json.loads(response.text)
+    a_search_result = all_search_result["results"]
+    number_result = len(a_search_result)
+    name_results= []
+    id_results = []
+    for m in a_search_result:
+        name_result = m["name"]
+        id_result = m["id"]
+        name_results.append(name_result)
+        id_results.append(id_result)
+    print("Actor/Actress Search Results")
+    print("--------------------------------------------------------------")
+    for m in range(0,number_result):
+        print(f"""{m+1}. Actor/Actress Name: {name_results[m]}""")
+
+    while True:
+        input_id = input("Please Enter The Number of The Actor/Actress Which You Want to Know More: ")
+        try:
+            float(input_id)
+            input_idt = int(input_id)
+            if 1<=input_idt<=20:
+                break
+            else:
+                print("YOUR INPUT IS OUT OF RANGE, PLEASE ENTER A NUMBER BETWEEN 1 AND 2O")
+        except ValueError as e:
+            print("CHECK YOUR INPUT. NO STRING, ONLY NUMARTIC PLEASE TRY ANOTHER (Example: 1)")
+
+    real_input = input_idt-1
+    actor_id = a_search_result[real_input]["id"]
+    print(actor_id)
+    request_url4 = f"https://api.themoviedb.org/3/person/{actor_id}/movie_credits?api_key={api_key}&language=en-US"
+    actor_detail_result = requests.get(request_url4)
+    actor_detail = json.loads(actor_detail_result.text)
+    actor_cast = actor_detail["cast"]
+    title_results= []
+    date_results= []
+    overview_results= []
+    chara_results= []
+    for a in actor_cast:
+        title_result = a["title"]
+        chara_result = a["character"]
+        overview_result = a["overview"]
+        date_result = a["release_date"]
+        title_results.append(title_result)
+        date_results.append(date_result)
+        overview_results.append(overview_result)
+        chara_results.append(chara_result)
+        print(f"""Movie Name: {title_result}
+Character Name: {chara_result}
+Release Date: {date_result}
+Overview: {overview_result}
+""")
+
+######### Actor Lookup ##############################
+
 def popular():
     print("popular")
+
 def lucky():
     print("lucky")
 
