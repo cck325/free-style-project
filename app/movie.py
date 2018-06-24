@@ -35,16 +35,39 @@ Please Select a Operation
 
 def now():
     print("now")
+    request_url = f"https://api.themoviedb.org/3/movie/now_playing?api_key={api_key}&language=en-US&page=1"
+    now_playing_r = requests.get(request_url)
+    now_playing_all = json.loads(now_playing_r.text)
+    now_playing = now_playing_all["results"]
+    now_titiles = []
+    now_overviews = []
+    now_dates = []
+    for x in now_playing:
+        now_titile = x["title"]
+        now_overview = x["overview"]
+        now_date = x["release_date"]
+        now_titiles.append(now_titile)
+        now_overviews.append(now_overview)
+        now_dates.append(now_date)
+    print(now_titiles)
+
+
+
 
 def movie_info():
     global m_search_result
     while True:
         movie_name = input("Plase Enter a Movie Name: ")
         movie_name_ns = movie_name.replace(" ", "%20")
-        request_url = f"https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query={movie_name_ns}&page=1&include_adult=false"
-        response = requests.get(request_url)
+        request_url2 = f"https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query={movie_name_ns}&page=1&include_adult=false"
+        response = requests.get(request_url2)
         status_code = response.status_code
-        print(status_code)
+        #print(status_code)
+        if status_code == 200:
+            pass
+        else:
+            print("Something Went Wrong, Status Code:",status_code)
+            exit()
         all_search_result = json.loads(response.text)
         check_result = int(all_search_result["total_results"])
         if check_result == 0:
@@ -59,13 +82,15 @@ def movie_info():
     date_results= []
     lang_results= []
 
-    for m in range(0,number_result):
-        name_result = m_search_result[m]["title"]
-        date_result = m_search_result[m]["release_date"]
-        lang_result = m_search_result[m]["original_language"]
+    for m in m_search_result:
+        name_result = m["title"]
+        date_result = m["release_date"]
+        lang_result = m["original_language"]
         name_results.append(name_result)
         date_results.append(date_result)
         lang_results.append(lang_result)
+
+
 
         #print(date_results)
 
@@ -92,8 +117,8 @@ def movie_info2():
     real_input = input_idt-1
     movie_id = m_search_result[real_input]["id"]
     #print(movie_id)
-    request_url2 = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
-    movie_detail_result = requests.get(request_url2)
+    request_url3 = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
+    movie_detail_result = requests.get(request_url3)
     movie_detail = json.loads(movie_detail_result.text)
     #print(movie_detail)
     movie_title = movie_detail["title"]
@@ -150,6 +175,9 @@ def run():
         lucky()
     elif fst_input == "Exit":
         quit()
+    else:
+        print("OOPS SORRY. PLEASE TRY AGAIN.")
+        return run()
 
 
 if __name__ == "__main__":
