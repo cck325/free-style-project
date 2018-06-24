@@ -7,6 +7,8 @@ import csv
 import datetime
 from IPython import embed
 import itertools
+import random
+
 
 ########### Environent Setting##################
 
@@ -33,7 +35,7 @@ Please Select an Operation
     'Actor'   | List Filmography of an Actor/Actress.
     'Popular' | Most Popular Movies.
     'Lucky'   | Give a Random Movie Suggestion.
-    'Exit'    | Exit the application."""
+    'Exit'    | Exit the Application."""
 
 
 ########## Operation ###############################
@@ -234,10 +236,67 @@ Overview: {overview_result}
 ######### Actor Lookup ##############################
 
 def popular():
-    print("popular")
+    print("--------------------------------------------------------------")
+    request_url6 = f"https://api.themoviedb.org/3/movie/popular?api_key={api_key}&language=en-US&page=1"
+    popular_r = requests.get(request_url6)
+    status_code = popular_r.status_code
+    if status_code == 200:
+        pass
+    else:
+        print("Something Went Wrong, HTTP Status Code:",status_code,"Please Check Read Me and Try Again Later")
+        exit()
+    popular_all = json.loads(popular_r.text)
+    popular = popular_all["results"]
+    popular_titiles = []
+    popular_overviews = []
+    popular_dates = []
+    for x in popular:
+        popular_titile = x["title"]
+        popular_overview = x["overview"]
+        popular_date = x["release_date"]
+        popular_titiles.append(popular_titile)
+        popular_overviews.append(popular_overview)
+        popular_dates.append(popular_date)
+        print(f"""Movie Name: {popular_titile}
+Release Date: {popular_date}
+Overview: {popular_overview}
+""")
 
 def lucky():
-    print("lucky")
+    print("--------------------------------------------------------------")
+    request_url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={api_key}&language=en-US"
+    lucky_r = requests.get(request_url)
+    status_code = lucky_r.status_code
+    if status_code == 200:
+        pass
+    else:
+        print("Something Went Wrong, HTTP Status Code:",status_code,"Please Check Read Me and Try Again Later")
+        exit()
+    lucky = json.loads(lucky_r.text)
+    lucky_n_pages = int(lucky["total_pages"])
+    random_page = random.randrange(lucky_n_pages+1)
+    #print(random_page)
+    request_url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={api_key}&language=en-US&page={random_page}"
+    random_lucky_r = requests.get(request_url)
+    random_lucky = json.loads(random_lucky_r.text)
+    lucky_list = random_lucky["results"]
+    n_of_list = len(lucky_list)
+    n_random = random.randrange(n_of_list+1)
+    r_title = lucky_list[n_random]["title"]
+    r_otitle = lucky_list[n_random]["original_title"]
+    r_date = lucky_list[n_random]["release_date"]
+    r_overview = lucky_list[n_random]["overview"]
+    print(f"""You Are In Luck!! Here Is A Movie For You To Watch~~
+
+Original Movie Name: {r_otitle}
+English Movie Name: {r_title}
+Release Date: {r_date}
+Overview: {r_overview}""")
+
+    print(r_title)
+
+
+
 
 
 def run():
