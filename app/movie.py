@@ -15,28 +15,40 @@ load_dotenv(dotenv_path)
 api_key = os.environ.get("themoviedb_API_KEY") or "OOPS. Please set an environment variable named 'themoviedb_API_KEY'."
 
 #api_key = "d322c4679b5b52a4ea8558d17053bcf9"
+#api_key = "123"
 
 ########## Menu ###############################
+run_time = datetime.datetime.now()
+
 menu = f"""
 -----------------------------------
 Welcome to Your Movie Database
+Current Date and Time  {run_time.strftime("%Y-%m-%d %H:%M:%S")}
 -----------------------------------
-Please Select a Operation
-    operation | description
+Please Select an Operation
+    Operation | Description
     --------- | ------------------
     'Now'     | New Movies in Theaters Now.
     'Movie'   | Show Information of A Movie.
     'Actor'   | Filmography of an Actor/Actress.
     'Popular' | Most Popular Movies.
     'Lucky'   | Give a Random Movie Suggestion.
-    'Exit'    | Exit the application. """
+    'Exit'    | Exit the application."""
 
 
+########## Operation ###############################
 
+######### Now Playing ##############################
 def now():
-    print("now")
+    print("--------------------------------------------------------------")
     request_url = f"https://api.themoviedb.org/3/movie/now_playing?api_key={api_key}&language=en-US&page=1"
     now_playing_r = requests.get(request_url)
+    status_code = now_playing_r.status_code
+    if status_code == 200:
+        pass
+    else:
+        print("Something Went Wrong, HTTP Status Code:",status_code,"Please Check Read Me and Try Again Later")
+        exit()
     now_playing_all = json.loads(now_playing_r.text)
     now_playing = now_playing_all["results"]
     now_titiles = []
@@ -49,12 +61,15 @@ def now():
         now_titiles.append(now_titile)
         now_overviews.append(now_overview)
         now_dates.append(now_date)
-    print(now_titiles)
+        print(f"""Movie Name: {now_titile}
+Release Date: {now_date}
+Overview: {now_overview}
+""")
 
-
-
+######### Movie Lookup ##############################
 
 def movie_info():
+    print("--------------------------------------------------------------")
     global m_search_result
     while True:
         movie_name = input("Plase Enter a Movie Name: ")
@@ -90,18 +105,16 @@ def movie_info():
         date_results.append(date_result)
         lang_results.append(lang_result)
 
-
-
-        #print(date_results)
-
     print("Movie Name Search Results")
-    print("-------------------------")
+    print("--------------------------------------------------------------")
     for m in range(0,number_result):
         print(f"""{m+1}. Movie Name: {name_results[m]}
-        Release Date: {date_results[m]}, Original Language: {lang_results[m]}""")
+    Release Date: {date_results[m]}, Original Language: {lang_results[m]}
+    """)
 
 
 def movie_info2():
+    print("--------------------------------------------------------------")
     while True:
         input_id = input("Please Enter The Number of The Movie Which You Want to Know More: ")
         try:
@@ -149,6 +162,8 @@ def movie_info2():
         print(f""" ++ Actor {name_results[p]} as {chara_results[p]} """)
     print("Movie Overview: ", movie_overview)
     print("---------------------------------------------")
+
+######### Actor Lookup ##############################
 
 def actor():
     print("actor")
