@@ -56,6 +56,8 @@ def now():
     now_titiles = []
     now_overviews = []
     now_dates = []
+    print("The Movies Showed Below Are In Theaters Now")
+    print("")
     for x in now_playing:
         now_titile = x["title"]
         now_overview = x["overview"]
@@ -262,6 +264,8 @@ Release Date: {popular_date}
 Overview: {popular_overview}
 """)
 
+######### Lucky ##############################
+
 def lucky():
     print("--------------------------------------------------------------")
     request_url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={api_key}&language=en-US"
@@ -293,11 +297,7 @@ English Movie Name: {r_title}
 Release Date: {r_date}
 Overview: {r_overview}""")
 
-    print(r_title)
-
-
-
-
+######### Lucky ##############################
 
 def run():
     fst_input = input("Please Select An Operation: ")
