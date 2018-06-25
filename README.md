@@ -62,7 +62,7 @@ HTTP    Status Message
 Run tests:
 
 ```sh
-pdb.set_trace() for testing
+pdb.set_trace() #for testing
 ```
 
 ## [License](LICENSE.md)
