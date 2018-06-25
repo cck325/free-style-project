@@ -280,7 +280,7 @@ def lucky():
     random_lucky = json.loads(random_lucky_r.text)
     lucky_list = random_lucky["results"]
     n_of_list = len(lucky_list)
-    n_random = random.randrange(n_of_list+1)
+    n_random = random.randrange(0,n_of_list+1)
     r_title = lucky_list[n_random]["title"]
     r_otitle = lucky_list[n_random]["original_title"]
     r_date = lucky_list[n_random]["release_date"]
@@ -312,7 +312,7 @@ def run():
     elif fst_input == "Exit":
         quit()
     else:
-        print("OOPS SORRY. PLEASE TRY AGAIN.")
+        print("OOPS SORRY. PLEASE TRY AGAIN, ONlY STRING..")
         return run()
 
 
