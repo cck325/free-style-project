@@ -17,8 +17,6 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 api_key = os.environ.get("themoviedb_API_KEY") or "OOPS. Please set an environment variable named 'themoviedb_API_KEY'."
 
-#api_key = "d322c4679b5b52a4ea8558d17053bcf9"
-#api_key = "123"
 
 ########## Menu ###############################
 run_time = datetime.datetime.now()
