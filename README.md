@@ -55,7 +55,9 @@ HTTP    Status Message
 500     Internal error: Something went wrong, contact TMDb.
 401     Authentication failed.
 ```
+**Error**
 
+There are missing info in the database, sometimes the database will have errors(like missing release date in a movie) this will return an error which is out of my control. If ever encounter that please choose something else.
 
 ## Testing
 
