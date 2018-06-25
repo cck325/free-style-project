@@ -207,7 +207,6 @@ def actor():
 
     real_input = input_idt-1
     actor_id = a_search_result[real_input]["id"]
-    print(actor_id)
     request_url4 = f"https://api.themoviedb.org/3/person/{actor_id}/movie_credits?api_key={api_key}&language=en-US"
     actor_detail_result = requests.get(request_url4)
     actor_detail = json.loads(actor_detail_result.text)
@@ -231,7 +230,7 @@ Release Date: {date_result}
 Overview: {overview_result}
 """)
 
-######### Actor Lookup ##############################
+######### Popular Movie ##############################
 
 def popular():
     print("--------------------------------------------------------------")
