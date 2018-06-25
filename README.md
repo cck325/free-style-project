@@ -50,10 +50,10 @@ HTTP    Status Message
 200     Sccues
 401     Authentication failed: You do not have permissions to access the service.
 401     Invalid API key: You must be granted a valid key.
-503     Service offline: This service is temporarily offline, try again later.
 401     Suspended API key: Access to your account has been suspended, contact TMDb.
-500     Internal error: Something went wrong, contact TMDb.
 401     Authentication failed.
+500     Internal error: Something went wrong, contact TMDb.
+503     Service offline: This service is temporarily offline, try again later.
 ```
 **Error**
 
