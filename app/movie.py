@@ -3,10 +3,7 @@ from os.path import join, dirname
 import json
 import os
 import requests
-import csv
 import datetime
-from IPython import embed
-import itertools
 import random
 import pdb
 
