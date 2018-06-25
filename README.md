@@ -2,7 +2,17 @@
 
 # Movie Database Application
 
-Lookup movies playing in theater, Movie info, Actor casting history, now playing in theater, current popular movies and movie suggestion.
+Functions:
+
+1. List Movies in Theater Now
+
+2. Movie Info
+
+3. Actor/Actress Casting History 
+
+4. Current Popular Movies
+
+5. Movie Suggestion.
 
 ## Prerequisites
 
@@ -20,9 +30,9 @@ pip install dotenv
 
 Please visit The Movie DB's website and get its API access code.
 
-[The Movie DB Homepage URL](https://www.themoviedb.org/?language=en)
+[The Movie DB Homepage](https://www.themoviedb.org/?language=en)
 
-[API Page URL](https://www.themoviedb.org/documentation/api?language=en)
+[API Page](https://www.themoviedb.org/documentation/api?language=en)
 
 Download all document in this repository
 
