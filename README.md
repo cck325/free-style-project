@@ -62,7 +62,7 @@ HTTP    Status Message
 Run tests:
 
 ```sh
-pytest tests/ # specify filepath to exclude tests from downloaded repos
+pdb.set_trace() for testing
 ```
 
 ## [License](LICENSE.md)
