@@ -35,7 +35,6 @@ If there is a error "Something Went Wrong, HTTP Status Code:XXX, Please Check Re
 HTTP    Status Message
 ----------------------
 200     Sccues
-501     Invalid service: this service does not exist.
 401     Authentication failed: You do not have permissions to access the service.
 401     Invalid API key: You must be granted a valid key.
 503     Service offline: This service is temporarily offline, try again later.
@@ -45,6 +44,15 @@ HTTP    Status Message
 ```
 
 
+## Testing
+
+Run tests:
+
+```sh
+pytest tests/ # specify filepath to exclude tests from downloaded repos
+```
+
+## [License](LICENSE.md)
 
 
 
