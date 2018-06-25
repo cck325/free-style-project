@@ -32,6 +32,7 @@ Please enter your API code in the .env file!
 If there is a error "Something Went Wrong, HTTP Status Code:XXX, Please Check Read Me and Try Again Later" present please see list down below for potential problem.
 
 HTTP     Status Message
-*200     Sccues
+
+-200     Sccues
 
 
