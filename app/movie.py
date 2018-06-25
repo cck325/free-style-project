@@ -172,13 +172,19 @@ def actor():
         request_url4 = f"https://api.themoviedb.org/3/search/person?api_key={api_key}&language=en-US&query={actor_name_ns}&page=1&include_adult=false"
         response = requests.get(request_url4)
         status_code = response.status_code
-        #print(status_code)
         if status_code == 200:
-            break
+            pass
         else:
             print("Something Went Wrong, HTTP Status Code:",status_code,"Please Check Read Me and Try Again Later")
             exit()
-    all_search_result = json.loads(response.text)
+
+        all_search_result = json.loads(response.text)
+        check_result = int(all_search_result["total_results"])
+        if check_result == 0:
+            print("Please Try Again, No Search Found")
+        else:
+            break
+
     a_search_result = all_search_result["results"]
     number_result = len(a_search_result)
     name_results= []
