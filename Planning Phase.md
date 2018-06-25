@@ -2,21 +2,21 @@
 
 ## Problem Statement
 
-###Primary User
+Primary User
 
 Anyone who loves watching movie
 
-####User Needs Statement
+User Needs Statement
 
 As a movie lover who watch movies all the time have the need to know who are the main actor and actress in a certain film and when will the movie be in theater and sometime they don't know what movie to watch.
 
-#####As-is Process Description
+As-is Process Description
 User currently either need to search for a movie and look for who are the actor and actress in the file or they don't know what movie to watch.
 If they are looking up informaiton for a certain movie they wil need to need to find out the date when the film will be in thrater.
 If they don't know what film to watch, they will search online and look for recommandation.
 After review through recommandtation then they will decide what file to watch.
 
-#####To-be Process Description
+To-be Process Description
 If they want info for a movie they can input the name of the film and get results.
 If they want info for an actor they can input the actor name and get results.
 If they want to know what movies are in theater now they can input "now" and get results.
