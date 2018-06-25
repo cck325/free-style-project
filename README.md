@@ -38,8 +38,9 @@ Download all document in this repository
 
 ## Usage
 
-Important:
-Please enter your API code in the .env file!
+**Important:**
+
+Please enter **your API code in the .env file before use!**
 
 If there is a error "Something Went Wrong, HTTP Status Code:XXX, Please Check Read Me and Try Again Later" present please see list down below for potential problem.
 
