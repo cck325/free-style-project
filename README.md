@@ -34,6 +34,8 @@ If there is a error "Something Went Wrong, HTTP Status Code:XXX, Please Check Re
 HTTP  Status	Message
 -------------------------------------------------------------
 200   Success.
+
+
 501	  Invalid service: this service does not exist.
 401	  Authentication failed: You do not have permissions to access the service.
 401	  Invalid API key: You must be granted a valid key.
