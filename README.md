@@ -19,8 +19,10 @@ pip install dotenv
 ## Setup
 
 Please visit The Movie DB's website and get its API access code.
-The Movie DB Homepage URL (https://www.themoviedb.org/?language=en)
-API Page URL (https://www.themoviedb.org/documentation/api?language=en)
+
+[The Movie DB Homepage URL] (https://www.themoviedb.org/?language=en)
+
+[API Page URL] (https://www.themoviedb.org/documentation/api?language=en)
 
 Download all document in this repository
 
