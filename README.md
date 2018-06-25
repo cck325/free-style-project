@@ -31,6 +31,7 @@ Please enter your API code in the .env file!
 
 If there is a error "Something Went Wrong, HTTP Status Code:XXX, Please Check Read Me and Try Again Later" present please see list down below for potential problem.
 
+```
 HTTP    Status Message
 ----------------------
 200     Sccues
@@ -41,7 +42,7 @@ HTTP    Status Message
 401     Suspended API key: Access to your account has been suspended, contact TMDb.
 500     Internal error: Something went wrong, contact TMDb.
 401     Authentication failed.
-
+```
 
 
 
