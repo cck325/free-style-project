@@ -295,6 +295,7 @@ Overview: {r_overview}""")
 ######### Lucky ##############################
 
 def run():
+    print("")
     fst_input = input("Please Select An Operation: ")
     fst_input = fst_input.title()
 
