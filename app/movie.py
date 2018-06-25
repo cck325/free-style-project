@@ -8,6 +8,7 @@ import datetime
 from IPython import embed
 import itertools
 import random
+import pdb
 
 
 ########### Environent Setting##################
