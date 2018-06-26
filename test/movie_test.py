@@ -1,6 +1,4 @@
-import csv
-import json
-import os
-import pdb
+from move import now
 
-from app.move import now
+def test_now()
+
